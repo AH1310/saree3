@@ -1,0 +1,14 @@
+{
+  "id":"./",
+  "name":"سريع — منصة الخدمات المصغرة والعمل الحر",
+  "short_name":"سريع",
+  "description":"اكتشف الخدمات الرقمية وتواصل مباشرة مع مقدميها.",
+  "lang":"ar",
+  "dir":"rtl",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f6f8fc",
+  "theme_color":"#101a38",
+  "icons":[{"src":"./assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
