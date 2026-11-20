@@ -57,7 +57,6 @@
       overflow-x: hidden;
     }
 
-    /* شريط التنقل العلوي */
     header {
       background-color: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -95,18 +94,19 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
-    .nav-actions {
+    .header-right {
       display: flex;
       align-items: center;
       gap: 8px;
+      position: relative;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 8px 15px;
+      padding: 8px 14px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
       border: 1px solid transparent;
       transition: 0.2s;
@@ -129,13 +129,136 @@
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-    .btn-admin {
-      background-color: #7c3aed;
+    .btn-primary {
+      background-color: var(--primary);
       color: #fff;
     }
-    .btn-admin:hover { background-color: #6d28d9; }
+    .btn-primary:hover { background-color: var(--primary-light); }
 
-    /* البانر الرئيسي */
+    .menu-toggle-btn {
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 8px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .menu-toggle-btn:hover,
+    .menu-toggle-btn.open {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      inset-inline-end: 0;
+      width: 275px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.22);
+      padding: 10px;
+      z-index: 250;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-dropdown.show {
+      display: flex;
+      animation: menuFadeIn 0.16s ease-out;
+    }
+
+    @keyframes menuFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-item {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: start;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.15s;
+    }
+
+    .menu-item:hover {
+      background: var(--surface-alt);
+      border-color: var(--border);
+      color: var(--accent);
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 4px 0;
+    }
+
+    .menu-badge-pill {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: var(--surface-alt);
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .auth-tab-btn {
+      padding: 8px 12px;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .auth-tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .username-status {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 5px;
+      min-height: 20px;
+    }
+    .status-ok { color: var(--success); }
+    .status-err { color: var(--danger); }
+    .status-info { color: var(--text-muted); }
+
     .hero {
       background: linear-gradient(135deg, #143656 0%, #0f2942 60%, #1e4d7b 100%);
       color: #fff;
@@ -169,7 +292,6 @@
       font-size: 1.05rem;
     }
 
-    /* شريط البحث والتصفية */
     .search-box {
       max-width: 650px;
       margin: 0 auto 25px;
@@ -216,7 +338,6 @@
       border-color: #F37021;
     }
 
-    /* شريط المميزات وتثبيت التطبيق */
     .features-strip {
       max-width: 1250px;
       margin: -22px auto 30px;
@@ -251,7 +372,6 @@
       flex-shrink: 0;
     }
 
-    /* الحاوية الرئيسية */
     .container {
       max-width: 1250px;
       margin: 20px auto 60px;
@@ -267,7 +387,6 @@
       gap: 10px;
     }
 
-    /* شبكة الخدمات */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -399,7 +518,6 @@
       gap: 6px;
     }
 
-    /* قسم خطوات تنزيل التطبيق PWA */
     .pwa-guide {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -423,7 +541,6 @@
       border: 1px solid var(--border);
     }
 
-    /* النوافذ المنبثقة Modals */
     .modal {
       display: none;
       position: fixed;
@@ -493,7 +610,6 @@
       gap: 8px;
     }
 
-    /* واجهة الشات الداخلي */
     .chat-messages {
       height: 320px;
       overflow-y: auto;
@@ -542,7 +658,6 @@
       gap: 8px;
     }
 
-    /* التذييل */
     footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -560,26 +675,69 @@
 </head>
 <body>
 
-  <!-- الهيدر -->
   <header>
     <div style="display:flex; align-items:center; gap:10px;">
       <a href="#" class="brand">⚡ سريـ<span>ـع</span></a>
       <span class="zero-fee-pill" data-i18n="zero_fee">0% عمولة</span>
     </div>
 
-    <div class="nav-actions">
-      <button class="btn btn-outline" onclick="toggleLanguage()" id="langBtn">English</button>
-      <button class="btn btn-outline" onclick="toggleTheme()" id="themeBtn">🌙</button>
-      <a href="https://ahmedhafezfrontend-ah13.netlify.app/" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="dev_btn">👨‍💻 مطور الموقع</a>
-      <button class="btn btn-outline" id="installPwaBtn" style="display:none;" data-i18n="install_btn">📲 تثبيت التطبيق</button>
-      <button class="btn btn-outline" onclick="openInboxModal()" id="inboxBtn" style="display:none;" data-i18n="inbox_btn">💬 رسائلي</button>
-      <button class="btn btn-admin" onclick="openAdminModal()" id="adminPanelBtn" style="display:none;" data-i18n="admin_btn">🛡️ لوحة الأدمن</button>
+    <div class="header-right">
+      <button class="btn btn-outline" id="headerSignupBtn" onclick="openSignupModal()" data-i18n="signup_top_btn">إنشاء حساب</button>
       <button class="btn btn-accent" onclick="handleAddServiceClick()" data-i18n="add_service">+ أضف خدمة</button>
-      <button class="btn btn-outline" onclick="openAuthModal()" id="authBtn" data-i18n="login_btn">دخول / حساب</button>
+
+      <button class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleNavMenu(event)" aria-expanded="false">
+        <span>☰</span>
+        <span data-i18n="menu_btn">القائمة</span>
+      </button>
+
+      <div class="nav-dropdown" id="navDropdown">
+        <button class="menu-item" onclick="closeNavMenu(); openLoginModal();" id="menuLoginItem">
+          <span id="menuAuthText" data-i18n="login_btn">تسجيل الدخول</span>
+          <span class="menu-badge-pill" id="menuAuthBadge">دخول</span>
+        </button>
+
+        <button class="menu-item" onclick="closeNavMenu(); openSignupModal();" id="menuSignupItem">
+          <span data-i18n="signup_menu_btn">✨ إنشاء حساب جديد</span>
+          <span class="menu-badge-pill">@username</span>
+        </button>
+
+        <button class="menu-item" onclick="closeNavMenu(); openInboxModal();" id="menuInboxItem" style="display:none;">
+          <span data-i18n="inbox_btn">💬 رسائلي</span>
+          <span class="menu-badge-pill">شات</span>
+        </button>
+
+        <button class="menu-item" onclick="closeNavMenu(); openAdminModal();" id="menuAdminItem" style="display:none; color:#7c3aed;">
+          <span data-i18n="admin_btn">🛡️ لوحة الأدمن</span>
+          <span class="menu-badge-pill">Admin</span>
+        </button>
+
+        <div class="menu-divider"></div>
+
+        <button class="menu-item" onclick="closeNavMenu(); toggleLanguage();">
+          <span data-i18n="lang_label">🌐 اللغة / Language</span>
+          <span class="menu-badge-pill" id="menuLangBadge">English</span>
+        </button>
+
+        <button class="menu-item" onclick="closeNavMenu(); toggleTheme();">
+          <span data-i18n="theme_label">🎨 المظهر</span>
+          <span class="menu-badge-pill" id="menuThemeBadge">🌙 داكن</span>
+        </button>
+
+        <button class="menu-item" id="menuInstallItem" onclick="closeNavMenu(); triggerPWAInstall();">
+          <span data-i18n="install_btn">📲 تثبيت التطبيق</span>
+          <span class="menu-badge-pill">PWA</span>
+        </button>
+
+        <div class="menu-divider"></div>
+
+        <a href="https://ahmedhafezfrontend-ah13.netlify.app/" target="_blank" rel="noopener" class="menu-item" onclick="closeNavMenu()">
+          <span data-i18n="dev_btn">👨‍💻 مطور الموقع</span>
+          <span class="menu-badge-pill">↗</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- القسم الرئيسي -->
   <section class="hero">
     <div class="hero-badge" data-i18n="hero_badge">🔥 المنصة العربية الأولى بدون أي عمولة على البائع أو المشتري</div>
     <h1 data-i18n="hero_title">أنجز أعمالك ومشاريعك في أسرع وقت</h1>
@@ -601,7 +759,6 @@
     </div>
   </section>
 
-  <!-- شريط المميزات -->
   <div class="features-strip">
     <div class="feature-box">
       <div class="feature-icon">💸</div>
@@ -633,7 +790,6 @@
     </div>
   </div>
 
-  <!-- قائمة الخدمات -->
   <main class="container">
     <div class="section-header">
       <h2 data-i18n="services_heading">الخدمات المتاحة الآن</h2>
@@ -644,7 +800,6 @@
       <p style="grid-column:1/-1; text-align:center; padding:40px;" data-i18n="loading">جاري تحميل الخدمات...</p>
     </div>
 
-    <!-- خطوات تنزيل التطبيق PWA -->
     <section class="pwa-guide" id="pwaGuide">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <div>
@@ -671,7 +826,6 @@
     </section>
   </main>
 
-  <!-- الفوتر -->
   <footer>
     <p style="margin-bottom:8px; font-weight:700;" data-i18n="footer_rights">منصة سريع للخدمات المصغرة والعمل الحر — بدون عمولة 0% © 2026</p>
     <p>
@@ -680,36 +834,63 @@
     </p>
   </footer>
 
-  <!-- 1. نافذة تسجيل الدخول / إنشاء حساب -->
+  <!-- نافذة الحساب (تسجيل الدخول باسم المستخدم أو البريد + إنشاء حساب باسم مستخدم فريد) -->
   <div class="modal" id="authModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h3 id="authModalTitle" data-i18n="auth_title">تسجيل الدخول أو إنشاء حساب جديد</h3>
+        <h3 id="authModalTitle">حسابي في سريع</h3>
         <button class="close-modal" onclick="closeModal('authModal')">&times;</button>
       </div>
+
       <div id="loggedInView" style="display:none; text-align:center;">
-        <p style="margin-bottom:10px;"><strong id="userEmailDisplay"></strong></p>
+        <p style="margin-bottom:6px; font-size:1.05rem;"><strong>@<span id="currentUsernameDisplay"></span></strong></p>
+        <p style="margin-bottom:10px; color:var(--text-muted); font-size:0.9rem;" id="userEmailDisplay"></p>
         <p id="adminBadgeDisplay" style="color:#7c3aed; font-weight:800; margin-bottom:15px; display:none;">🛡️ حساب مدير النظام (Admin)</p>
         <button class="btn btn-outline" style="width:100%; justify-content:center; color:var(--danger);" onclick="logoutUser()" data-i18n="logout_btn">تسجيل الخروج</button>
       </div>
-      <form id="authForm">
-        <div class="form-group">
-          <label data-i18n="email_lbl">البريد الإلكتروني</label>
-          <input type="email" id="authEmail" class="form-control" placeholder="name@example.com" required />
+
+      <div id="authFormsWrapper">
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab-btn active" id="tabLoginBtn" onclick="switchAuthTab('login')">تسجيل الدخول</button>
+          <button type="button" class="auth-tab-btn" id="tabSignupBtn" onclick="switchAuthTab('signup')">إنشاء حساب</button>
         </div>
-        <div class="form-group">
-          <label data-i18n="pass_lbl">كلمة المرور (6 أحرف على الأقل)</label>
-          <input type="password" id="authPassword" class="form-control" minlength="6" required />
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;">
-          <button type="button" class="btn btn-accent" style="justify-content:center;" onclick="loginUser()" data-i18n="signin_btn">تسجيل الدخول</button>
-          <button type="button" class="btn btn-outline" style="justify-content:center;" onclick="signupUser()" data-i18n="signup_btn">حساب جديد</button>
-        </div>
-      </form>
+
+        <!-- نموذج تسجيل الدخول (باسم المستخدم الفريد أو البريد الإلكتروني) -->
+        <form id="loginForm" onsubmit="loginUser(event)">
+          <div class="form-group">
+            <label>اسم المستخدم الفريد أو البريد الإلكتروني</label>
+            <input type="text" id="loginIdentifier" class="form-control" dir="ltr" placeholder="username أو name@example.com" required />
+            <small style="color:var(--text-muted);">يمكنك تسجيل الدخول مباشرة باسم المستخدم الفريد الخاص بك.</small>
+          </div>
+          <div class="form-group">
+            <label data-i18n="pass_lbl">كلمة المرور</label>
+            <input type="password" id="loginPassword" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-accent" style="width:100%; justify-content:center; margin-top:8px;" id="loginSubmitBtn">دخول</button>
+        </form>
+
+        <!-- نموذج إنشاء حساب جديد مع اسم مستخدم فريد -->
+        <form id="signupForm" style="display:none;" onsubmit="signupUser(event)">
+          <div class="form-group">
+            <label>اسم المستخدم الفريد (Username)</label>
+            <input type="text" id="signupUsername" class="form-control" dir="ltr" placeholder="ahmed_dev" minlength="3" maxlength="24" oninput="checkUsernameAvailability()" required />
+            <div id="usernameStatusMsg" class="username-status status-info">أحرف إنجليزية صغيرة وأرقام وشرطة سفلية فقط (3–24 حرفاً).</div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="email_lbl">البريد الإلكتروني</label>
+            <input type="email" id="signupEmail" class="form-control" placeholder="name@example.com" required />
+          </div>
+          <div class="form-group">
+            <label data-i18n="pass_lbl">كلمة المرور (6 أحرف على الأقل)</label>
+            <input type="password" id="signupPassword" class="form-control" minlength="6" required />
+          </div>
+          <button type="submit" class="btn btn-accent" style="width:100%; justify-content:center; margin-top:8px;" id="signupSubmitBtn">إنشاء الحساب الآن</button>
+        </form>
+      </div>
     </div>
   </div>
 
-  <!-- 2. نافذة إضافة خدمة جديدة -->
+  <!-- نافذة إضافة خدمة -->
   <div class="modal" id="addServiceModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -768,7 +949,7 @@
     </div>
   </div>
 
-  <!-- 3. نافذة الشات الداخلي المباشر -->
+  <!-- نافذة الشات الداخلي -->
   <div class="modal" id="chatModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -786,7 +967,7 @@
     </div>
   </div>
 
-  <!-- 4. نافذة صندوق الوارد (محادثاتي) -->
+  <!-- صندوق الوارد -->
   <div class="modal" id="inboxModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -797,7 +978,7 @@
     </div>
   </div>
 
-  <!-- 5. لوحة تحكم الأدمن الكاملة -->
+  <!-- لوحة الأدمن -->
   <div class="modal" id="adminModal">
     <div class="modal-box" style="max-width:750px;">
       <div class="modal-header">
@@ -824,9 +1005,6 @@
   </div>
 
   <script>
-    // ==========================================
-    // 1. إعداد Supabase والصلاحيات
-    // ==========================================
     const SUPABASE_URL = 'https://ptqlriggnoiklbcjhheu.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_npJGIFodTJRteH9gKcwJwg_bknW0Ijs';
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -835,6 +1013,7 @@
     const ADMIN_UID = 'f77e61f6-0714-4258-9017-d575c20f175b';
 
     let currentUser = null;
+    let currentUsername = '';
     let isAdmin = false;
     let allServices = [];
     let selectedCategory = 'ALL';
@@ -842,10 +1021,8 @@
     let activeChat = null;
     let chatSubscription = null;
     let deferredPrompt = null;
+    let usernameCheckTimer = null;
 
-    // ==========================================
-    // 2. قائمة كل الدول العربية ومفاتيح الاتصال
-    // ==========================================
     const ARAB_COUNTRIES = [
       { code: '20', nameAr: '🇪🇬 مصر (+20)', nameEn: '🇪🇬 Egypt (+20)' },
       { code: '966', nameAr: '🇸🇦 السعودية (+966)', nameEn: '🇸🇦 Saudi Arabia (+966)' },
@@ -878,18 +1055,20 @@
       ).join('');
     }
 
-    // ==========================================
-    // 3. الترجمة (عربي / إنجليزي) والوضع الليلي
-    // ==========================================
     const I18N = {
       ar: {
         zero_fee: '0% عمولة',
+        signup_top_btn: 'إنشاء حساب',
+        signup_menu_btn: '✨ إنشاء حساب جديد',
+        menu_btn: 'القائمة',
+        lang_label: '🌐 اللغة / Language',
+        theme_label: '🎨 المظهر',
         dev_btn: '👨‍💻 مطور الموقع',
         install_btn: '📲 تثبيت التطبيق',
         inbox_btn: '💬 رسائلي',
         admin_btn: '🛡️ لوحة الأدمن',
         add_service: '+ أضف خدمة',
-        login_btn: 'دخول / حساب',
+        login_btn: 'تسجيل الدخول',
         hero_badge: '🔥 المنصة العربية الأولى بدون أي عمولة على البائع أو المشتري',
         hero_title: 'أنجز أعمالك ومشاريعك في أسرع وقت',
         hero_sub: 'تواصل مباشرة مع المستقلين عبر الشات الداخلي أو تليجرام وواتساب — انشر خدمتك فوراً واحتفظ بكامل أرباحك 100%.',
@@ -934,6 +1113,11 @@
       },
       en: {
         zero_fee: '0% Commission',
+        signup_top_btn: 'Sign Up',
+        signup_menu_btn: '✨ Create Account',
+        menu_btn: 'Menu',
+        lang_label: '🌐 Language / اللغة',
+        theme_label: '🎨 Appearance',
         dev_btn: '👨‍💻 Developer',
         install_btn: '📲 Install App',
         inbox_btn: '💬 My Chats',
@@ -984,10 +1168,40 @@
       }
     };
 
+    function toggleNavMenu(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('navDropdown');
+      const btn = document.getElementById('menuToggleBtn');
+      const isOpen = dd.classList.toggle('show');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function closeNavMenu() {
+      const dd = document.getElementById('navDropdown');
+      const btn = document.getElementById('menuToggleBtn');
+      dd.classList.remove('show');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('navDropdown');
+      const btn = document.getElementById('menuToggleBtn');
+      if (dd && btn && !dd.contains(e.target) && !btn.contains(e.target)) {
+        closeNavMenu();
+      }
+    });
+
+    function syncMenuBadges() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.getElementById('menuLangBadge').textContent = currentLang === 'ar' ? 'English' : 'عربي';
+      document.getElementById('menuThemeBadge').textContent = isDark ? '☀️ فاتح' : '🌙 داكن';
+    }
+
     function applyLanguage() {
       document.documentElement.lang = currentLang;
       document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-      document.getElementById('langBtn').textContent = currentLang === 'ar' ? 'English' : 'عربي';
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -999,6 +1213,7 @@
         if (I18N[currentLang][key]) el.placeholder = I18N[currentLang][key];
       });
 
+      syncMenuBadges();
       populateCountries();
       renderServices();
     }
@@ -1014,71 +1229,270 @@
       const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       html.setAttribute('data-theme', next);
       localStorage.setItem('saree3_theme', next);
-      document.getElementById('themeBtn').textContent = next === 'light' ? '🌙' : '☀️';
+      syncMenuBadges();
     }
 
-    // استعادة الوضع الليلي المحفوظ
     if (localStorage.getItem('saree3_theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      document.getElementById('themeBtn').textContent = '☀️';
+    }
+    syncMenuBadges();
+
+    function switchAuthTab(tab) {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const tabLogin = document.getElementById('tabLoginBtn');
+      const tabSignup = document.getElementById('tabSignupBtn');
+
+      if (tab === 'signup') {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+        tabLogin.classList.remove('active');
+        tabSignup.classList.add('active');
+        document.getElementById('authModalTitle').textContent = 'إنشاء حساب جديد باسم مستخدم فريد';
+      } else {
+        signupForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        tabSignup.classList.remove('active');
+        tabLogin.classList.add('active');
+        document.getElementById('authModalTitle').textContent = 'تسجيل الدخول باسم المستخدم أو البريد';
+      }
     }
 
-    // ==========================================
-    // 4. إدارة المستخدمين وصلاحيات الأدمن
-    // ==========================================
-    async function checkUserSession() {
-      const { data: { session } } = await db.auth.getSession();
-      updateUserState(session?.user || null);
+    function openLoginModal() {
+      if (!currentUser) switchAuthTab('login');
+      openModal('authModal');
+    }
 
-      db.auth.onAuthStateChange((_event, session) => {
-        updateUserState(session?.user || null);
+    function openSignupModal() {
+      if (!currentUser) switchAuthTab('signup');
+      openModal('authModal');
+    }
+
+    function normalizeUsername(raw) {
+      return String(raw || '').trim().toLowerCase().replace(/^@+/, '');
+    }
+
+    function isValidUsername(u) {
+      return /^[a-z0-9_]{3,24}$/.test(u);
+    }
+
+    async function checkUsernameAvailability() {
+      const input = document.getElementById('signupUsername');
+      const statusEl = document.getElementById('usernameStatusMsg');
+      const u = normalizeUsername(input.value);
+      input.value = u;
+
+      clearTimeout(usernameCheckTimer);
+
+      if (!u) {
+        statusEl.className = 'username-status status-info';
+        statusEl.textContent = 'أحرف إنجليزية صغيرة وأرقام وشرطة سفلية فقط (3–24 حرفاً).';
+        return false;
+      }
+
+      if (!isValidUsername(u)) {
+        statusEl.className = 'username-status status-err';
+        statusEl.textContent = 'اسم المستخدم يجب أن يكون 3 إلى 24 حرفاً (a-z, 0-9, _ فقط).';
+        return false;
+      }
+
+      statusEl.className = 'username-status status-info';
+      statusEl.textContent = 'جاري التحقق من توفر اسم المستخدم...';
+
+      return new Promise((resolve) => {
+        usernameCheckTimer = setTimeout(async () => {
+          const { data, error } = await db
+            .from('profiles')
+            .select('username')
+            .eq('username', u)
+            .maybeSingle();
+
+          if (error) {
+            statusEl.className = 'username-status status-info';
+            statusEl.textContent = 'سيتم التحقق النهائي عند إنشاء الحساب.';
+            resolve(true);
+            return;
+          }
+
+          if (data) {
+            statusEl.className = 'username-status status-err';
+            statusEl.textContent = `❌ اسم المستخدم (@${u}) محجوز مسبقاً، اختر اسماً آخر.`;
+            resolve(false);
+          } else {
+            statusEl.className = 'username-status status-ok';
+            statusEl.textContent = `✅ اسم المستخدم (@${u}) متاح وفريد!`;
+            resolve(true);
+          }
+        }, 250);
       });
     }
 
-    function updateUserState(user) {
+    async function loadUserProfile(userId, fallbackEmail = '') {
+      if (!userId) {
+        currentUsername = '';
+        return;
+      }
+      const { data } = await db
+        .from('profiles')
+        .select('username')
+        .eq('id', userId)
+        .maybeSingle();
+
+      currentUsername = data?.username || (fallbackEmail ? fallbackEmail.split('@')[0] : 'user');
+      document.getElementById('currentUsernameDisplay').textContent = currentUsername;
+      if (currentUser) {
+        const badge = isAdmin ? 'مدير' : `@${currentUsername}`;
+        document.getElementById('menuAuthBadge').textContent = badge;
+        document.getElementById('menuAuthText').textContent = isAdmin ? '🛡️ Admin' : `👤 @${currentUsername}`;
+      }
+    }
+
+    async function checkUserSession() {
+      const { data: { session } } = await db.auth.getSession();
+      await updateUserState(session?.user || null);
+
+      db.auth.onAuthStateChange(async (_event, session) => {
+        await updateUserState(session?.user || null);
+      });
+    }
+
+    async function updateUserState(user) {
       currentUser = user;
       isAdmin = Boolean(
         user && (user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase() || user.id === ADMIN_UID)
       );
 
-      const authBtn = document.getElementById('authBtn');
-      const inboxBtn = document.getElementById('inboxBtn');
-      const adminBtn = document.getElementById('adminPanelBtn');
+      const menuAuthText = document.getElementById('menuAuthText');
+      const menuAuthBadge = document.getElementById('menuAuthBadge');
+      const menuSignupItem = document.getElementById('menuSignupItem');
+      const headerSignupBtn = document.getElementById('headerSignupBtn');
+      const menuInboxItem = document.getElementById('menuInboxItem');
+      const menuAdminItem = document.getElementById('menuAdminItem');
       const loggedInView = document.getElementById('loggedInView');
-      const authForm = document.getElementById('authForm');
+      const authFormsWrapper = document.getElementById('authFormsWrapper');
 
       if (user) {
-        authBtn.textContent = isAdmin ? '🛡️ Admin' : `👤 ${user.email.split('@')[0]}`;
-        inboxBtn.style.display = 'inline-flex';
-        adminBtn.style.display = isAdmin ? 'inline-flex' : 'none';
+        await loadUserProfile(user.id, user.email);
+        menuAuthText.textContent = isAdmin ? '🛡️ Admin' : `👤 @${currentUsername || user.email.split('@')[0]}`;
+        menuAuthBadge.textContent = isAdmin ? 'مدير' : `@${currentUsername || 'حسابي'}`;
+        menuSignupItem.style.display = 'none';
+        headerSignupBtn.style.display = 'none';
+        menuInboxItem.style.display = 'flex';
+        menuAdminItem.style.display = isAdmin ? 'flex' : 'none';
         loggedInView.style.display = 'block';
-        authForm.style.display = 'none';
+        authFormsWrapper.style.display = 'none';
+        document.getElementById('authModalTitle').textContent = 'بيانات حسابي';
         document.getElementById('userEmailDisplay').textContent = user.email;
         document.getElementById('adminBadgeDisplay').style.display = isAdmin ? 'block' : 'none';
       } else {
-        authBtn.textContent = I18N[currentLang].login_btn;
-        inboxBtn.style.display = 'none';
-        adminBtn.style.display = 'none';
+        currentUsername = '';
+        menuAuthText.textContent = I18N[currentLang].login_btn;
+        menuAuthBadge.textContent = 'دخول';
+        menuSignupItem.style.display = 'flex';
+        headerSignupBtn.style.display = 'inline-flex';
+        menuInboxItem.style.display = 'none';
+        menuAdminItem.style.display = 'none';
         loggedInView.style.display = 'none';
-        authForm.style.display = 'block';
+        authFormsWrapper.style.display = 'block';
       }
       renderServices();
     }
 
-    async function loginUser() {
-      const email = document.getElementById('authEmail').value.trim();
-      const password = document.getElementById('authPassword').value;
-      const { error } = await db.auth.signInWithPassword({ email, password });
+    async function loginUser(e) {
+      if (e) e.preventDefault();
+      const rawIdentifier = document.getElementById('loginIdentifier').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('loginSubmitBtn');
+
+      if (!rawIdentifier || !password) return;
+
+      btn.disabled = true;
+      let emailToUse = rawIdentifier;
+
+      if (!rawIdentifier.includes('@')) {
+        const cleanUser = normalizeUsername(rawIdentifier);
+        const { data: resolvedEmail, error: rpcError } = await db.rpc('get_email_by_username', {
+          p_username: cleanUser
+        });
+
+        if (rpcError || !resolvedEmail) {
+          const { data: prof } = await db
+            .from('profiles')
+            .select('email')
+            .eq('username', cleanUser)
+            .maybeSingle();
+
+          if (!prof?.email) {
+            btn.disabled = false;
+            return alert('اسم المستخدم غير موجود. تأكد من كتابته بشكل صحيح أو أنشئ حساباً جديداً.');
+          }
+          emailToUse = prof.email;
+        } else {
+          emailToUse = resolvedEmail;
+        }
+      }
+
+      const { error } = await db.auth.signInWithPassword({ email: emailToUse, password });
+      btn.disabled = false;
+
       if (error) return alert(error.message);
+      document.getElementById('loginForm').reset();
       closeModal('authModal');
     }
 
-    async function signupUser() {
-      const email = document.getElementById('authEmail').value.trim();
-      const password = document.getElementById('authPassword').value;
-      const { error } = await db.auth.signUp({ email, password });
-      if (error) return alert(error.message);
-      alert(currentLang === 'ar' ? 'تم إنشاء الحساب بنجاح!' : 'Account created successfully!');
+    async function signupUser(e) {
+      if (e) e.preventDefault();
+      const username = normalizeUsername(document.getElementById('signupUsername').value);
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const btn = document.getElementById('signupSubmitBtn');
+
+      if (!isValidUsername(username)) {
+        return alert('اسم المستخدم يجب أن يتكون من 3 إلى 24 حرفاً (إنجليزي صغير، أرقام، أو _).');
+      }
+
+      btn.disabled = true;
+
+      // التحقق من عدم تكرار اسم المستخدم
+      const { data: existingUser } = await db
+        .from('profiles')
+        .select('username')
+        .eq('username', username)
+        .maybeSingle();
+
+      if (existingUser) {
+        btn.disabled = false;
+        return alert(`اسم المستخدم (@${username}) مستخدم بالفعل، يرجى اختيار اسم مستخدم فريد آخر.`);
+      }
+
+      const { data: authData, error } = await db.auth.signUp({
+        email,
+        password,
+        options: { data: { username } }
+      });
+
+      if (error) {
+        btn.disabled = false;
+        return alert(error.message);
+      }
+
+      if (authData?.user) {
+        const { error: profError } = await db.from('profiles').insert([{
+          id: authData.user.id,
+          username,
+          email
+        }]);
+
+        if (profError && profError.code === '23505') {
+          btn.disabled = false;
+          return alert('اسم المستخدم هذا تم حجزه للتو، اختر اسماً آخر.');
+        }
+      }
+
+      btn.disabled = false;
+      document.getElementById('signupForm').reset();
+      document.getElementById('usernameStatusMsg').textContent = '';
+      alert(`تم إنشاء حسابك بنجاح! اسم المستخدم الفريد الخاص بك هو: @${username}`);
       closeModal('authModal');
     }
 
@@ -1089,16 +1503,13 @@
 
     function handleAddServiceClick() {
       if (!currentUser) {
-        alert(currentLang === 'ar' ? 'سجّل الدخول أولاً لإضافة خدمتك فوراً.' : 'Please sign in first to post a service.');
-        openModal('authModal');
+        alert(currentLang === 'ar' ? 'سجّل الدخول أو أنشئ حساباً أولاً لإضافة خدمتك فوراً.' : 'Sign in or create an account first to post a service.');
+        openLoginModal();
         return;
       }
       openModal('addServiceModal');
     }
 
-    // ==========================================
-    // 5. جلب الخدمات وعرضها والتصفية
-    // ==========================================
     async function loadServices() {
       const { data, error } = await db
         .from('services')
@@ -1151,7 +1562,6 @@
       grid.innerHTML = filtered.map(s => {
         const cleanPhone = String(s.phone_number || '').replace(/\D/g, '').replace(/^0+/, '');
         const fullIntlPhone = `${s.country_code}${cleanPhone}`;
-        // رابط تليجرام يفتح برقم الهاتف مباشرة (+كود الدولة والرقم) أو باليوزر إن وجد
         const tgUrl = s.telegram_username
           ? `https://t.me/${encodeURIComponent(s.telegram_username.replace('@', ''))}`
           : `https://t.me/+${fullIntlPhone}`;
@@ -1202,7 +1612,6 @@
       }).join('');
     }
 
-    // نشر خدمة جديدة فوراً بدون مراجعة
     document.getElementById('serviceForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!currentUser) return;
@@ -1236,13 +1645,10 @@
       loadServices();
     });
 
-    // ==========================================
-    // 6. نظام الشات الداخلي الفوري (Realtime Chat)
-    // ==========================================
     async function openServiceChat(serviceId, serviceTitle, receiverId, receiverName) {
       if (!currentUser) {
         alert(currentLang === 'ar' ? 'سجّل الدخول أولاً لبدء المحادثة الداخلية.' : 'Sign in first to start chatting.');
-        openModal('authModal');
+        openLoginModal();
         return;
       }
 
@@ -1274,7 +1680,6 @@
 
       if (error) return;
 
-      // تصفية الرسائل الخاصة بهذا الطرف (أو عرض الكل للأدمن)
       const msgs = (data || []).filter(m =>
         isAdmin ||
         (m.sender_id === currentUser.id && m.receiver_id === activeChat.receiverId) ||
@@ -1324,7 +1729,6 @@
       activeChat = null;
     }
 
-    // صندوق الوارد للمحادثات
     async function openInboxModal() {
       if (!currentUser) return;
       openModal('inboxModal');
@@ -1364,9 +1768,6 @@
       `).join('');
     }
 
-    // ==========================================
-    // 7. لوحة تحكم الأدمن الكاملة
-    // ==========================================
     async function openAdminModal() {
       if (!isAdmin) return;
       openModal('adminModal');
@@ -1407,9 +1808,6 @@
       if (document.getElementById('adminModal').style.display === 'flex') openAdminModal();
     }
 
-    // ==========================================
-    // 8. إعداد PWA و Service Worker
-    // ==========================================
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
@@ -1419,10 +1817,7 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      document.getElementById('installPwaBtn').style.display = 'inline-flex';
     });
-
-    document.getElementById('installPwaBtn').addEventListener('click', triggerPWAInstall);
 
     async function triggerPWAInstall() {
       if (deferredPrompt) {
@@ -1434,18 +1829,15 @@
       }
     }
 
-    // أدوات مساعدة
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    function openAuthModal() { openModal('authModal'); }
     function esc(str) {
       return String(str || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
     }
     function escAttr(str) {
-      return String(str || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      return String(str || '').replace(/'/g, "'").replace(/"/g, '&quot;');
     }
 
-    // بدء التشغيل
     applyLanguage();
     checkUserSession();
     loadServices();
